@@ -11,14 +11,15 @@ public class Main {
     public static void main(String[] args) {
         Utils.clearTerminal();
 
-        // Create a client (example data)
-        Client client = new Client("John Doe", "john@example.com", "123456789");
+        // Cria o cliente com interface de texto
+        Client client = Client.createClientUi();
 
-        // Put the client in a map (using ID as key)
+        // Mapeia os clientes usando o ID como chave
         Map<String, Client> clients = new HashMap<>();
         clients.put(client.getId(), client);
 
-        // Save to JSON
+        // Salva em JSON
         JsonSaver.saveClientsToJson(clients, "clients.json");
     }
 }
+
