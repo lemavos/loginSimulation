@@ -5,6 +5,7 @@ import com.bank.client.ClientDB;
 import com.bank.lib.Utils;
 
 public class Main {
+
     public static void main(String[] args) {
         Utils.clearTerminal();
 
@@ -21,6 +22,5 @@ public class Main {
 
         // Salvar o cliente no banco SQLite
         db.insertOrUpdateClient(client);
-
     }
 }
