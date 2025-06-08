@@ -1,0 +1,10 @@
+src/test/java/com/bank/AppTest.java
+src/main/java/com/bank/Main.java
+src/main/java/com/bank/lib/Utils.java
+src/main/java/com/bank/lib/EmailSender.java
+src/main/java/com/bank/client/ClientDB.java
+src/main/java/com/bank/client/ValCodeGen.java
+src/main/java/com/bank/client/Transaction.java
+src/main/java/com/bank/client/ClientManager.java
+src/main/java/com/bank/client/IdGen.java
+src/main/java/com/bank/client/Client.java

@@ -54,7 +54,7 @@ public class Client {
         }
 
         Client client = new Client(name, email, phone);
-        client.validateCode = ValidationCodeGen.generateCode();
+        client.validateCode = ValCodeGen.generateCode();
         EmailSender.sendValEmail(client.email, client.validateCode);
 
         boolean activated = client.activateClient();
@@ -71,16 +71,16 @@ public class Client {
         this.name = name;
         this.email = email;
         this.phone = phone;
-        this.id = new IdGenerator().generateId();
+        this.id = new IdGen().generateId();
         this.status = false;
         this.credit = new BigDecimal(0);
         System.out.println("\nClient created with ID: " + this.id);
     }
 
     private boolean activateClient() {
+        System.err.println("Val code: " + this.validateCode); // remove after tests
         System.out.print("Insert validation code: ");
         String codeInsert = Utils.input();
-
         if (codeInsert.isEmpty()) {
             System.out.println("\n[!] Code validation is empty");
             return false;

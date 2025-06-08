@@ -1,6 +1,7 @@
 target/
+.vscode/
 *.log
 *.class
 .env
-.vscode/
+run.sh
 clients.sqbpro

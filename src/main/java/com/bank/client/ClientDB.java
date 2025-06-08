@@ -9,19 +9,37 @@ public class ClientDB {
         try {
             return DriverManager.getConnection(url);
         } catch (SQLException e) {
-            System.out.println("[!] Error conecting to DB: " + e.getMessage());
+            System.out.println("[!] Error connecting to DB: " + e.getMessage());
             return null;
+        }
+    }
+
+    public void createTableIfNotExists() {
+        String sql = "CREATE TABLE IF NOT EXISTS clients (" +
+                     "id TEXT PRIMARY KEY," +
+                     "status INTEGER," +
+                     "credit TEXT," +
+                     "name TEXT," +
+                     "email TEXT," +
+                     "phone TEXT" +
+                     ");";
+
+        try (Connection conn = connect(); Statement stmt = conn.createStatement()) {
+            stmt.execute(sql);
+            System.out.println("Table 'clients' ready.");
+        } catch (SQLException e) {
+            System.out.println("[!] Error creating table: " + e.getMessage());
         }
     }
 
     public void insertOrUpdateClient(Client client) {
         String sql = "INSERT INTO clients(id, status, credit, name, email, phone) VALUES (?, ?, ?, ?, ?, ?) "
-                   + "ON CONFLICT(id) DO UPDATE SET "
-                   + "status=excluded.status, "
-                   + "credit=excluded.credit, "
-                   + "name=excluded.name, "
-                   + "email=excluded.email, "
-                   + "phone=excluded.phone;";
+                + "ON CONFLICT(id) DO UPDATE SET "
+                + "status=excluded.status, "
+                + "credit=excluded.credit, "
+                + "name=excluded.name, "
+                + "email=excluded.email, "
+                + "phone=excluded.phone;";
 
         try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, client.getId());

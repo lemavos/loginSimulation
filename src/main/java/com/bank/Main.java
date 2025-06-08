@@ -17,6 +17,7 @@ public class Main {
 
         // Criar DB e tabela
         ClientDB db = new ClientDB();
+        db.createTableIfNotExists();
 
         // Salvar o cliente no banco SQLite
         db.insertOrUpdateClient(client);

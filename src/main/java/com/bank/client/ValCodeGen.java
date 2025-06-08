@@ -2,7 +2,7 @@ package com.bank.client;
 
 import java.util.Random;
 
-public class ValidationCodeGen {
+public class ValCodeGen {
     public static String generateCode() {
         String characters = "1234567890";
         StringBuilder code = new StringBuilder();

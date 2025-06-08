@@ -1,7 +1,7 @@
 package com.bank.client;
 import java.util.Random;
 
-public class IdGenerator {
+public class IdGen {
     public String generateId() {
         String characters = "abcdefghijklmnopqrstuvwxyz1234567890";
         StringBuilder id = new StringBuilder();
