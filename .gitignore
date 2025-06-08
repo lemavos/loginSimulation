@@ -3,5 +3,5 @@ target/
 *.log
 *.class
 .env
-run.sh
 clients.sqbpro
+clients.db
