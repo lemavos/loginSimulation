@@ -18,6 +18,8 @@ This is a simple Java system that simulates a bank, allowing client creation, st
 
 ## 📋 How to Run
 
+### Read ".env.md" to create your email sender, after that:
+
 ### 🐧 On Linux and macOS
 
 1. Make sure Maven is installed and configured:
