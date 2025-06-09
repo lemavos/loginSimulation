@@ -3,10 +3,14 @@ package com.bank.lib;
 import java.util.Scanner;
 
 public class Utils {
+
     public static void clearTerminal() {
         try {
             if (System.getProperty("os.name").contains("Windows")) {
-                new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+                new ProcessBuilder("cmd", "/c", "cls")
+                    .inheritIO()
+                    .start()
+                    .waitFor();
             } else {
                 new ProcessBuilder("clear").inheritIO().start().waitFor();
             }
@@ -16,6 +20,7 @@ public class Utils {
     }
 
     private static Scanner scanner = new Scanner(System.in);
+
     public static String input() {
         return scanner.nextLine();
     }
@@ -26,5 +31,9 @@ public class Utils {
 
     public static boolean isValidPhone(String phone) {
         return phone.matches("^\\d{8,15}$");
+    }
+
+    public static boolean isValidPassword(String password) {
+        return password.matches("^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$");
     }
 }

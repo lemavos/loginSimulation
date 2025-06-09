@@ -15,16 +15,21 @@ public class ClientDB {
     }
 
     public void createTableIfNotExists() {
-        String sql = "CREATE TABLE IF NOT EXISTS clients (" +
-                     "id TEXT PRIMARY KEY," +
-                     "status INTEGER," +
-                     "credit TEXT," +
-                     "name TEXT," +
-                     "email TEXT," +
-                     "phone TEXT" +
-                     ");";
+        String sql =
+            "CREATE TABLE IF NOT EXISTS clients (" +
+            "id TEXT PRIMARY KEY," +
+            "status INTEGER," +
+            "credit TEXT," +
+            "name TEXT," +
+            "email TEXT," +
+            "phone TEXT," +
+            "password TEXT" +
+            ");";
 
-        try (Connection conn = connect(); Statement stmt = conn.createStatement()) {
+        try (
+            Connection conn = connect();
+            Statement stmt = conn.createStatement()
+        ) {
             stmt.execute(sql);
             System.out.println("Table 'clients' ready.");
         } catch (SQLException e) {
@@ -32,27 +37,35 @@ public class ClientDB {
         }
     }
 
-    public void insertOrUpdateClient(Client client) {
-        String sql = "INSERT INTO clients(id, status, credit, name, email, phone) VALUES (?, ?, ?, ?, ?, ?) "
-                + "ON CONFLICT(id) DO UPDATE SET "
-                + "status=excluded.status, "
-                + "credit=excluded.credit, "
-                + "name=excluded.name, "
-                + "email=excluded.email, "
-                + "phone=excluded.phone;";
+    public void createDBClient(Client client) {
+        String sql =
+            "INSERT INTO clients(id, status, credit, name, email, phone, password) VALUES (?, ?, ?, ?, ?, ?, ?) " +
+            "ON CONFLICT(id) DO UPDATE SET " +
+            "status=excluded.status, " +
+            "credit=excluded.credit, " +
+            "name=excluded.name, " +
+            "email=excluded.email, " +
+            "phone=excluded.phone, " +
+            "password=excluded.password";
 
-        try (Connection conn = connect(); PreparedStatement pstmt = conn.prepareStatement(sql)) {
+        try (
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)
+        ) {
             pstmt.setString(1, client.getId());
             pstmt.setInt(2, client.getStatus() ? 1 : 0);
             pstmt.setString(3, client.getCredit().toPlainString());
             pstmt.setString(4, client.getName());
             pstmt.setString(5, client.getEmail());
             pstmt.setString(6, client.getPhone());
+            pstmt.setString(7, client.getPassword());
 
             pstmt.executeUpdate();
             System.out.println("Client saved: " + client.getName());
+            System.out.println("\n\n");
         } catch (SQLException e) {
             System.out.println("[1] Error saving client: " + e.getMessage());
+            System.out.println("\n\n");
         }
     }
 }
