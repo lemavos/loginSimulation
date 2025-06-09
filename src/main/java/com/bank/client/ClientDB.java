@@ -62,10 +62,8 @@ public class ClientDB {
 
             pstmt.executeUpdate();
             System.out.println("Client saved: " + client.getName());
-            System.out.println("\n\n");
         } catch (SQLException e) {
             System.out.println("[1] Error saving client: " + e.getMessage());
-            System.out.println("\n\n");
         }
     }
 }

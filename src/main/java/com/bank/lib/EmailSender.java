@@ -60,7 +60,7 @@ public class EmailSender {
             message.setContent(html, "text/html; charset=utf-8");
 
             Transport.send(message);
-            System.out.println("Email sent successfully to " + toValEmail);
+            System.out.println("|  Email sent successfully to " + toValEmail);
         } catch (MessagingException e) {
             e.printStackTrace();
         }
