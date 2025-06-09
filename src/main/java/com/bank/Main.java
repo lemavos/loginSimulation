@@ -1,10 +1,10 @@
 package com.bank;
 
-import com.bank.client.Register;
+import com.bank.menus.MainMenu;
 
 public class Main {
 
     public static void main(String[] args) {
-        Register.createClientFromUi();
+        MainMenu.main(args);
     }
 }

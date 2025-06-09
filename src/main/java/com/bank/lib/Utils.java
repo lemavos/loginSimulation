@@ -19,6 +19,12 @@ public class Utils {
         }
     }
 
+    public static void pressEnterToContinue() {
+        System.out.println("\nPress Enter to continue...");
+        Utils.input();
+        Utils.clearTerminal();
+    }
+
     private static Scanner scanner = new Scanner(System.in);
 
     public static String input() {
