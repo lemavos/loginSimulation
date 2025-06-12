@@ -15,6 +15,30 @@ public class ClientDB {
         }
     }
 
+    public boolean authenticateClient(String email, String password) {
+        String sql = "SELECT password FROM clients WHERE email = ?";
+
+        try (
+            Connection conn = connect();
+            PreparedStatement pstmt = conn.prepareStatement(sql)
+        ) {
+            pstmt.setString(1, email);
+            ResultSet rs = pstmt.executeQuery();
+
+            if (rs.next()) {
+                String storedPassword = rs.getString("password");
+                return password.equals(storedPassword);
+            } else {
+                return false;
+            }
+        } catch (SQLException e) {
+            System.out.println(
+                "[!] Error during authentication: " + e.getMessage()
+            );
+            return false;
+        }
+    }
+
     public void createTableIfNotExists() {
         String sql =
             "CREATE TABLE IF NOT EXISTS clients (" +

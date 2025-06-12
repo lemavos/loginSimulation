@@ -1,5 +1,6 @@
 package com.bank.menus;
 
+import com.bank.app.Login;
 import com.bank.app.Register;
 import com.bank.services.Utils;
 
@@ -58,9 +59,10 @@ public class MainMenu {
 
     private static void handleLogin() {
         Banners.printLoginBanner();
+        Login.login();
 
         // Fazer depois
-        System.out.println("Not finished yet :(");
+        //System.out.println("Not finished yet :(");
 
         Utils.pressEnterToContinue();
     }
