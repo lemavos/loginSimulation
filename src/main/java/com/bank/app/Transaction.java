@@ -1,12 +1,12 @@
-package com.bank.client;
+package com.bank.app;
 
+import com.bank.models.Client;
+import com.bank.services.Utils;
+import java.math.BigDecimal;
 import java.util.List;
 
-import com.bank.lib.Utils;
-
-import java.math.BigDecimal;
-
 public class Transaction {
+
     private List<Client> clients;
 
     public Transaction(List<Client> clients) {
@@ -25,7 +25,9 @@ public class Transaction {
         try {
             amount = new BigDecimal(Utils.input());
         } catch (NumberFormatException e) {
-            System.out.println("\nInvalid amount. Please enter a valid number.");
+            System.out.println(
+                "\nInvalid amount. Please enter a valid number."
+            );
             return;
         }
 
@@ -33,7 +35,9 @@ public class Transaction {
         Client receiver = findClientById(receiverId);
 
         if (sender == null || receiver == null) {
-            System.out.println("\nTransaction failed. One or both clients not found.");
+            System.out.println(
+                "\nTransaction failed. One or both clients not found."
+            );
             return;
         }
 
@@ -49,21 +53,39 @@ public class Transaction {
         return null;
     }
 
-    public static void transaction(Client sender, Client receiver, BigDecimal amount) {
+    public static void transaction(
+        Client sender,
+        Client receiver,
+        BigDecimal amount
+    ) {
         if (!sender.getStatus() || !receiver.getStatus()) {
-            System.out.println("\nTransaction failed. One or both clients are not active.");
+            System.out.println(
+                "\nTransaction failed. One or both clients are not active."
+            );
             return;
         }
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-            System.out.println("\nTransaction failed. Amount must be greater than zero.");
+            System.out.println(
+                "\nTransaction failed. Amount must be greater than zero."
+            );
             return;
         }
         if (sender.getCredit().compareTo(amount) < 0) {
-            System.out.println("\nTransaction failed. Insufficient credit for client " + sender.getId() + ".");
+            System.out.println(
+                "\nTransaction failed. Insufficient credit for client " +
+                sender.getId() +
+                "."
+            );
             return;
         }
         sender.setCredit(sender.getCredit().subtract(amount));
         receiver.setCredit(receiver.getCredit().add(amount));
-        System.out.println("\nTransaction between " + sender.getId() + " and " + receiver.getId() + " is successful.");
+        System.out.println(
+            "\nTransaction between " +
+            sender.getId() +
+            " and " +
+            receiver.getId() +
+            " is successful."
+        );
     }
 }

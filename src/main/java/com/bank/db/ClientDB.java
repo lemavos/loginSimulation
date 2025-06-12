@@ -1,5 +1,6 @@
-package com.bank.client;
+package com.bank.db;
 
+import com.bank.models.Client;
 import java.sql.*;
 
 public class ClientDB {

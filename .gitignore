@@ -1,7 +1,16 @@
 target/
+
+### IDE ###s
 .vscode/
+
+### BIN ###
 *.log
 *.class
+
+### .ENV ###
 .env
+
+### CLIENTS DATABASE ###
 clients.sqbpro
 clients.db
+clients.db-journal

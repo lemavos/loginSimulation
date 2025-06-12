@@ -1,6 +1,6 @@
 // file responsive to sent email to confirm email address.
 
-package com.bank.lib;
+package com.bank.services;
 
 import io.github.cdimascio.dotenv.Dotenv;
 import jakarta.mail.*;

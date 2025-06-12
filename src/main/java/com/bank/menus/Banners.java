@@ -1,6 +1,6 @@
 package com.bank.menus;
 
-public class MenuBanners {
+public class Banners {
 
     public static void printWelcomeBanner() {
         System.out.println("+============================================+");

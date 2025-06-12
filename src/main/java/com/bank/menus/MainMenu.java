@@ -1,7 +1,7 @@
 package com.bank.menus;
 
-import com.bank.client.Register;
-import com.bank.lib.Utils;
+import com.bank.app.Register;
+import com.bank.services.Utils;
 
 public class MainMenu {
 
@@ -19,8 +19,8 @@ public class MainMenu {
     private static void showMainMenu() {
         Utils.clearTerminal();
 
-        MenuBanners.printWelcomeBanner();
-        MenuBanners.printMainMenuBanner();
+        Banners.printWelcomeBanner();
+        Banners.printMainMenuBanner();
 
         System.out.print("Please select an option (1-3): ");
     }
@@ -42,7 +42,7 @@ public class MainMenu {
                 break;
             default:
                 System.out.println(
-                    "❌ Invalid option! Please select a number between 1-6."
+                    "[!] Error: Invalid option! Please select a number between 1-3."
                 );
                 Utils.pressEnterToContinue();
                 break;
@@ -50,14 +50,14 @@ public class MainMenu {
     }
 
     private static void handleCreateAccount() {
-        MenuBanners.printCreateAccountBanner();
+        Banners.printCreateAccountBanner();
 
         Register.createClientFromUi();
         Utils.pressEnterToContinue();
     }
 
     private static void handleLogin() {
-        MenuBanners.printLoginBanner();
+        Banners.printLoginBanner();
 
         // Fazer depois
         System.out.println("Not finished yet :(");

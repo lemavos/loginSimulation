@@ -1,6 +1,6 @@
 // generate id's to clients
 
-package com.bank.lib;
+package com.bank.services;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;

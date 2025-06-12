@@ -1,6 +1,8 @@
-package com.bank.client;
+package com.bank.app;
 
-import com.bank.lib.Utils;
+import com.bank.db.ClientDB;
+import com.bank.models.Client;
+import com.bank.services.Utils;
 
 public class Register {
 

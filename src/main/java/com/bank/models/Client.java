@@ -1,10 +1,10 @@
-package com.bank.client;
+package com.bank.models;
 
-import com.bank.lib.EmailSender;
-import com.bank.lib.IdGen;
-import com.bank.lib.Utils;
-import com.bank.lib.ValCodeGen;
-import com.bank.menus.MenuBanners;
+import com.bank.menus.Banners;
+import com.bank.services.EmailSender;
+import com.bank.services.IdGen;
+import com.bank.services.Utils;
+import com.bank.services.ValCodeGen;
 import java.math.BigDecimal;
 
 public class Client {
@@ -23,7 +23,7 @@ public class Client {
     }
 
     public static Client createClientUi() {
-        MenuBanners.printCreateAccountBanner();
+        Banners.printCreateAccountBanner();
         System.out.println("+=====================================+");
 
         System.out.print("|  Enter name: ");
@@ -84,7 +84,7 @@ public class Client {
         return client;
     }
 
-    private void info() {
+    public void info() {
         System.out.println("\nClient Information:");
         System.out.println("  Name: " + this.name);
         System.out.println("  Email: " + this.email);
