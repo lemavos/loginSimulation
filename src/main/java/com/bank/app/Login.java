@@ -6,8 +6,6 @@ import com.bank.services.Utils;
 public class Login {
 
     public static void login() {
-        Utils.clearTerminal();
-
         ClientDB db = new ClientDB();
 
         System.out.print("Enter your Email: ");

@@ -61,13 +61,11 @@ public class MainMenu {
         Banners.printLoginBanner();
         Login.login();
 
-        // Fazer depois
-        //System.out.println("Not finished yet :(");
-
         Utils.pressEnterToContinue();
     }
 
     private static void handleExit() {
+        Utils.clearTerminal();
         System.out.println("+=====================================+");
         System.out.println("|                 GOODBYE             |");
         System.out.println("+=====================================+");

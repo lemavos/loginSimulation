@@ -1,5 +1,7 @@
 package com.bank.menus;
 
+import com.bank.services.Utils;
+
 public class Banners {
 
     public static void printWelcomeBanner() {
@@ -21,12 +23,14 @@ public class Banners {
     }
 
     public static void printCreateAccountBanner() {
+        Utils.clearTerminal();
         System.out.println("+=====================================+");
-        System.out.println("|              CREATE ACCOUNT         |");
+        System.out.println("|            CREATE ACCOUNT           |");
         System.out.println("+=====================================+");
     }
 
     public static void printLoginBanner() {
+        Utils.clearTerminal();
         System.out.println("+=====================================+");
         System.out.println("|               LOGIN                 |");
         System.out.println("+=====================================+");
