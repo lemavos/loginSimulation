@@ -1,7 +1,8 @@
 target/
 
-### IDE ###s
+### IDEs ###
 .vscode/
+.settings
 
 ### BIN ###
 *.log

@@ -5,6 +5,7 @@ import java.sql.*;
 
 public class ClientDB {
 
+    // function to connect to the database
     private Connection connect() {
         String url = "jdbc:sqlite:clients.db";
         try {
@@ -15,6 +16,7 @@ public class ClientDB {
         }
     }
 
+    // function to authenticate a client
     public boolean authenticateClient(String email, String password) {
         String sql = "SELECT password FROM clients WHERE email = ?";
 
