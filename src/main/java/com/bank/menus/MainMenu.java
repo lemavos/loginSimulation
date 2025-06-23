@@ -3,81 +3,42 @@ package com.bank.menus;
 import com.bank.app.Login;
 import com.bank.app.Register;
 import com.bank.services.Utils;
+import javax.swing.*;
 
 public class MainMenu {
 
-    private static boolean running = true;
-
     public static void main(String[] args) {
-        while (running) {
-            showMainMenu();
-            handleMenuChoice();
-        }
+        JFrame janela = new JFrame("Login");
+        janela.setSize(350, 250);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janela.setLayout(null);
+        janela.setResizable(true);
 
-        System.out.println("\n Thank you for using Bank Simulation! Goodbye!");
+        showMainMenu(janela);
+
+        janela.setVisible(true);
     }
 
-    private static void showMainMenu() {
-        Utils.clearTerminal();
+    private static void showMainMenu(JFrame janela) {
+        JButton loginButton = new JButton("Login");
+        loginButton.setBounds(100, 60, 120, 30);
+        janela.add(loginButton);
+        loginButton.addActionListener(e -> {
+            janela.dispose();
+            Login.login();
+        });
 
-        Banners.printWelcomeBanner();
-        Banners.printMainMenuBanner();
-
-        System.out.print("Please select an option (1-3): ");
-    }
-
-    private static void handleMenuChoice() {
-        String choice = Utils.input();
-
-        System.out.println();
-
-        switch (choice) {
-            case "1":
-                handleCreateAccount();
-                break;
-            case "2":
-                handleLogin();
-                break;
-            case "3":
-                handleExit();
-                break;
-            default:
-                System.out.println(
-                    "[!] Error: Invalid option! Please select a number between 1-3."
-                );
-                Utils.pressEnterToContinue();
-                break;
-        }
+        JButton registerButton = new JButton("Register");
+        registerButton.setBounds(100, 110, 120, 30);
+        janela.add(registerButton);
+        registerButton.addActionListener(e -> {
+            janela.dispose();
+            handleCreateAccount();
+        });
     }
 
     private static void handleCreateAccount() {
-        Banners.printCreateAccountBanner();
-
         Register.createClientFromUi();
         Utils.pressEnterToContinue();
-    }
-
-    private static void handleLogin() {
-        Banners.printLoginBanner();
-        Login.login();
-
-        Utils.pressEnterToContinue();
-    }
-
-    private static void handleExit() {
-        Utils.clearTerminal();
-        System.out.println("+=====================================+");
-        System.out.println("|                 GOODBYE             |");
-        System.out.println("+=====================================+");
-        System.out.println();
-        System.out.println("[!] Are you sure you want to exit? (y/n): ");
-        String confirm = Utils.input().trim().toLowerCase();
-
-        if (confirm.equals("y") || confirm.equals("yes")) {
-            running = false;
-        } else {
-            System.out.println("Returning to main menu...");
-            Utils.pressEnterToContinue();
-        }
     }
 }

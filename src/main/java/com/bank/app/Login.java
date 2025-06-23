@@ -1,25 +1,64 @@
 package com.bank.app;
 
 import com.bank.db.ClientDB;
-import com.bank.services.Utils;
+import javax.swing.*;
 
 public class Login {
 
     public static void login() {
         ClientDB db = new ClientDB();
 
-        System.out.print("Enter your Email: ");
-        String email = Utils.input();
+        int axisX = 1080;
+        int axisY = 720;
 
-        System.out.print("Enter your Password: ");
-        String password = Utils.input();
+        int labelWidth = 80;
+        int fieldWidth = 200;
+        int buttonWidth = 100;
+        int statusWidth = 200;
 
-        boolean logged = db.authenticateClient(email, password);
+        JFrame janela = new JFrame("Login");
+        janela.setSize(axisX, axisY);
+        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        janela.setLayout(null);
+        janela.setResizable(true);
 
-        if (logged) {
-            System.out.println("Logged in successfully!");
-        } else {
-            System.out.println("[!] Email or password incorrect.");
-        }
+        JLabel emailLabel = new JLabel("Email:");
+        emailLabel.setBounds((axisX - labelWidth) / 2, 100, labelWidth, 25);
+        janela.add(emailLabel);
+
+        JTextField emailField = new JTextField();
+        emailField.setBounds((axisX - fieldWidth) / 2, 130, fieldWidth, 25);
+        janela.add(emailField);
+
+        JLabel passwordLabel = new JLabel("Password:");
+        passwordLabel.setBounds((axisX - labelWidth) / 2, 170, labelWidth, 25);
+        janela.add(passwordLabel);
+
+        JPasswordField passwordField = new JPasswordField();
+        passwordField.setBounds((axisX - fieldWidth) / 2, 200, fieldWidth, 25);
+        janela.add(passwordField);
+
+        JButton loginButton = new JButton("Login");
+        loginButton.setBounds((axisX - buttonWidth) / 2, 250, buttonWidth, 30);
+        janela.add(loginButton);
+
+        JLabel labelStatus = new JLabel("");
+        labelStatus.setBounds((axisX - statusWidth) / 2, 290, statusWidth, 20);
+        janela.add(labelStatus);
+
+        loginButton.addActionListener(e -> {
+            String email = emailField.getText();
+            String password = new String(passwordField.getPassword());
+
+            boolean logged = db.authenticateClient(email, password);
+
+            if (logged) {
+                labelStatus.setText("Logged in successfully!");
+            } else {
+                labelStatus.setText("[ ! ] Email or password incorrect.");
+            }
+        });
+
+        janela.setVisible(true);
     }
 }
