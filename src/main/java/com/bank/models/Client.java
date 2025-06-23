@@ -18,7 +18,7 @@ public class Client {
     private String password;
     private transient String validateCode;
 
-    private Client(String name, String email, String phone, String password) {
+    public Client(String name, String email, String phone, String password) {
         createClient(name, email, phone, password);
     }
 
@@ -48,16 +48,7 @@ public class Client {
         System.out.println("|  Client created with ID: " + this.id);
     }
 
-    private boolean activateClient() {
-        System.err.println("Val code: " + this.validateCode); // remove after tests
-        System.out.print("|  Insert validation code: ");
-        String codeInsert = Utils.input();
-        if (codeInsert.isEmpty()) {
-            System.out.println("\n|  [!] Code validation is empty");
-            System.out.println("+=====================================+");
-            return false;
-        }
-
+    public boolean activateClient(String codeInsert) {
         if (codeInsert.equals(this.validateCode)) {
             this.status = true;
             System.out.println("|  Client activated with ID: " + this.id);
@@ -114,5 +105,13 @@ public class Client {
     // Setters
     public void setCredit(BigDecimal credit) {
         this.credit = credit;
+    }
+
+    public String getValidateCode() {
+        return validateCode;
+    }
+
+    public void setValidateCode(String validateCode) {
+        this.validateCode = validateCode;
     }
 }
