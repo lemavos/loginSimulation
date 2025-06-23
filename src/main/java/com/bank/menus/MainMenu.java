@@ -8,37 +8,32 @@ import javax.swing.*;
 public class MainMenu {
 
     public static void main(String[] args) {
-        JFrame janela = new JFrame("Login");
-        janela.setSize(350, 250);
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janela.setLayout(null);
-        janela.setResizable(true);
+        JFrame root = new JFrame("Login");
+        root.setSize(350, 250);
+        root.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        root.setLayout(null);
+        root.setResizable(true);
 
-        showMainMenu(janela);
+        showMainMenu(root);
 
-        janela.setVisible(true);
+        root.setVisible(true);
     }
 
-    private static void showMainMenu(JFrame janela) {
+    private static void showMainMenu(JFrame root) {
         JButton loginButton = new JButton("Login");
         loginButton.setBounds(100, 60, 120, 30);
-        janela.add(loginButton);
+        root.add(loginButton);
         loginButton.addActionListener(e -> {
-            janela.dispose();
+            root.dispose();
             Login.login();
         });
 
         JButton registerButton = new JButton("Register");
         registerButton.setBounds(100, 110, 120, 30);
-        janela.add(registerButton);
+        root.add(registerButton);
         registerButton.addActionListener(e -> {
-            janela.dispose();
-            handleCreateAccount();
+            root.dispose();
+            Register.createClientFromUi();
         });
-    }
-
-    private static void handleCreateAccount() {
-        Register.createClientFromUi();
-        Utils.pressEnterToContinue();
     }
 }

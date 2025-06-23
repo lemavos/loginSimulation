@@ -16,35 +16,35 @@ public class Login {
         int buttonWidth = 100;
         int statusWidth = 200;
 
-        JFrame janela = new JFrame("Login");
-        janela.setSize(axisX, axisY);
-        janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        janela.setLayout(null);
-        janela.setResizable(true);
+        JFrame root = new JFrame("Login");
+        root.setSize(axisX, axisY);
+        root.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        root.setLayout(null);
+        root.setResizable(true);
 
         JLabel emailLabel = new JLabel("Email:");
         emailLabel.setBounds((axisX - labelWidth) / 2, 100, labelWidth, 25);
-        janela.add(emailLabel);
+        root.add(emailLabel);
 
         JTextField emailField = new JTextField();
         emailField.setBounds((axisX - fieldWidth) / 2, 130, fieldWidth, 25);
-        janela.add(emailField);
+        root.add(emailField);
 
         JLabel passwordLabel = new JLabel("Password:");
         passwordLabel.setBounds((axisX - labelWidth) / 2, 170, labelWidth, 25);
-        janela.add(passwordLabel);
+        root.add(passwordLabel);
 
         JPasswordField passwordField = new JPasswordField();
         passwordField.setBounds((axisX - fieldWidth) / 2, 200, fieldWidth, 25);
-        janela.add(passwordField);
+        root.add(passwordField);
 
         JButton loginButton = new JButton("Login");
         loginButton.setBounds((axisX - buttonWidth) / 2, 250, buttonWidth, 30);
-        janela.add(loginButton);
+        root.add(loginButton);
 
         JLabel labelStatus = new JLabel("");
         labelStatus.setBounds((axisX - statusWidth) / 2, 290, statusWidth, 20);
-        janela.add(labelStatus);
+        root.add(labelStatus);
 
         loginButton.addActionListener(e -> {
             String email = emailField.getText();
@@ -59,6 +59,6 @@ public class Login {
             }
         });
 
-        janela.setVisible(true);
+        root.setVisible(true);
     }
 }

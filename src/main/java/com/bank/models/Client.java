@@ -22,68 +22,6 @@ public class Client {
         createClient(name, email, phone, password);
     }
 
-    public static Client createClientUi() {
-        Banners.printCreateAccountBanner();
-        System.out.println("+=====================================+");
-
-        System.out.print("|  Enter name: ");
-        String name = Utils.input();
-        System.out.print("|  Enter email: ");
-        String email = Utils.input();
-        System.out.print("|  Enter phone (optional): ");
-        String phone = Utils.input();
-        System.out.print("|  Enter password: ");
-        String password = Utils.input();
-        System.out.println("+=====================================+");
-
-        // Validate inputs
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            System.out.println(
-                "|  [!] All fields are required. Please try again."
-            );
-            System.out.println("+=====================================+");
-            return null;
-        }
-        if (!Utils.isValidEmail(email)) {
-            System.out.println(
-                "|  [!] Invalid email format. Please try again."
-            );
-            System.out.println("+=====================================+");
-            return null;
-        }
-        if (phone != null && !phone.isEmpty()) {
-            if (!Utils.isValidPhone(phone)) {
-                System.out.println(
-                    "|  [!] Invalid phone number format. Please try again."
-                );
-                System.out.println("+=====================================+");
-            }
-        }
-        if (!Utils.isValidPassword(password)) {
-            System.out.println(
-                "|  [!] Invalid password format. Please try again."
-            );
-            System.out.println("+=====================================+");
-            return null;
-        }
-
-        Client client = new Client(name, email, phone, password);
-        client.validateCode = ValCodeGen.generateCode();
-        System.out.println("+=====================================+");
-        EmailSender.sendValEmail(client.email, client.validateCode);
-
-        boolean activated = client.activateClient();
-        if (!activated) {
-            System.out.println(
-                "|  [!] Client creation failed due to invalid code."
-            );
-            System.out.println("+=====================================+");
-            return null;
-        }
-
-        return client;
-    }
-
     public void info() {
         System.out.println("\nClient Information:");
         System.out.println("  Name: " + this.name);
