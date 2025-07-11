@@ -1,10 +1,6 @@
-package com.bank.models;
+package com.app.models;
 
-import com.bank.menus.Banners;
-import com.bank.services.EmailSender;
-import com.bank.services.IdGen;
-import com.bank.services.Utils;
-import com.bank.services.ValCodeGen;
+import com.app.services.IdGen;
 import java.math.BigDecimal;
 
 public class Client {

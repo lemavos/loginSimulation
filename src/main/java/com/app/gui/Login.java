@@ -1,6 +1,6 @@
-package com.bank.app;
+package com.app.gui;
 
-import com.bank.db.ClientDB;
+import com.app.db.ClientDB;
 import javax.swing.*;
 
 public class Login {

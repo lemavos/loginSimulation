@@ -1,8 +1,5 @@
-package com.bank.menus;
+package com.app.gui;
 
-import com.bank.app.Login;
-import com.bank.app.Register;
-import com.bank.services.Utils;
 import javax.swing.*;
 
 public class MainMenu {

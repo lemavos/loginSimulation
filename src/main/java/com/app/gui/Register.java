@@ -1,22 +1,22 @@
-package com.bank.app;
+package com.app.gui;
 
-import com.bank.db.ClientDB;
-import com.bank.models.Client;
-import com.bank.services.EmailSender;
-import com.bank.services.Utils;
-import com.bank.services.ValCodeGen;
+import com.app.constants.CommonConstants;
+import com.app.db.ClientDB;
+import com.app.models.Client;
+import com.app.services.EmailSender;
+import com.app.services.Utils;
+import com.app.services.ValCodeGen;
 import javax.swing.*;
 
 public class Register {
 
     public static void createClientFromUi() {
-        int axisX = 1080;
-        int axisY = 720;
+        int axisX = CommonConstants.AXIS_X;
+        int axisY = CommonConstants.AXIS_Y;
 
         int labelWidth = 80;
         int fieldWidth = 200;
         int buttonWidth = 100;
-        int statusWidth = 200;
 
         JFrame root = new JFrame("Register");
         root.setSize(axisX, axisY);
