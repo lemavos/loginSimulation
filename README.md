@@ -2,12 +2,12 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This is a simple Java system that simulates a bank, allowing client creation, storage in a SQLite database, and transactions between clients.
+This is a simple Java system that simulates a login, allowing client creation, storage in a SQLite database.
 
 ## 🚀 Features
 
 - Create clients and save them in a SQLite database
-- Perform transactions between clients
+- Email Sender for verification code
 
 ## 🧑‍💻 Technologies Used
 
@@ -29,8 +29,8 @@ This is a simple Java system that simulates a bank, allowing client creation, st
 
 2. Clone the repository (if you haven't yet):
    ```bash
-   git clone https://github.com/lemavos/bankSimulation.git
-   cd bankSimulation
+   git clone https://github.com/lemavos/loginSimulation.git
+   cd loginSimulation
    ```
 
 3. Compile and run the project with Maven:
@@ -48,16 +48,11 @@ This is a simple Java system that simulates a bank, allowing client creation, st
 
 2. Clone the repository:
    ```powershell
-   git clone https://github.com/lemavos/bankSimulation.git
-   cd bankSimulation
+   git clone https://github.com/lemavos/loginSimulation.git
+   cd loginSimulation
    ```
 
 3. Compile and run:
    ```powershell
    ./run.bat
    ```
-
-## 🤖 How It Works
-
-- The system creates and manages clients, storing their data in a SQLite database.
-- It allows clients to perform transactions between each other.
