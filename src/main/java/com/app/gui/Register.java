@@ -7,82 +7,99 @@ import com.app.services.EmailSender;
 import com.app.services.Utils;
 import com.app.services.ValCodeGen;
 import javax.swing.*;
-
 public class Register {
-
-    public static void createClientFromUi() {
+    public static void register(){
         int axisX = CommonConstants.AXIS_X;
         int axisY = CommonConstants.AXIS_Y;
+        int commonWidth = CommonConstants.COMMON_WIDTH;
+        int commonHeight = CommonConstants.COMMON_HEIGHT;
+        int fieldWidth = CommonConstants.FIELD_WIDTH;
+        int especialWidth = CommonConstants.ESPECIAL_WIDTH;
+        int padY = CommonConstants.PADY;
+        int currentY = CommonConstants.START_Y;
 
-        int labelWidth = 80;
-        int fieldWidth = 200;
-        int buttonWidth = 100;
-
+        // Define UI dimensions
         JFrame root = new JFrame("Register");
         root.setSize(axisX, axisY);
         root.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         root.setLayout(null);
-        root.setResizable(true);
+        root.setResizable(false);
 
-        // Username
+    // USERNAME
+        // Username Filed
         JLabel usernameLabel = new JLabel("Username:");
-        usernameLabel.setBounds((axisX - labelWidth) / 2, 100, labelWidth, 25);
+        usernameLabel.setBounds((axisX - commonWidth) / 2, currentY, commonWidth, commonHeight);
         root.add(usernameLabel);
+        currentY += padY;
 
+        // Username Input
         JTextField usernameField = new JTextField();
-        usernameField.setBounds((axisX - fieldWidth) / 2, 130, fieldWidth, 25);
+        usernameField.setBounds((axisX - fieldWidth) / 2, currentY, fieldWidth, commonHeight);
         root.add(usernameField);
-
-        // Email
+        currentY += padY;
+    
+    // EMAIL
+        // Email Label
         JLabel emailLabel = new JLabel("Email:");
-        emailLabel.setBounds((axisX - labelWidth) / 2, 170, labelWidth, 25);
+        emailLabel.setBounds((axisX - commonWidth) / 2, currentY, commonWidth, commonHeight);
         root.add(emailLabel);
+        currentY += padY;
 
+        // Email Input
         JTextField emailField = new JTextField();
-        emailField.setBounds((axisX - fieldWidth) / 2, 200, fieldWidth, 25);
+        emailField.setBounds((axisX - fieldWidth) / 2, currentY, fieldWidth, commonHeight);
         root.add(emailField);
+        currentY += padY;
 
-        // Password
+    // PASSWORD
+        // Password Label
         JLabel passwordLabel = new JLabel("Password:");
-        passwordLabel.setBounds((axisX - labelWidth) / 2, 240, labelWidth, 25);
+        passwordLabel.setBounds((axisX - commonWidth) / 2, currentY, commonWidth, commonHeight);
         root.add(passwordLabel);
+        currentY += padY;
 
+        // Password Input
         JPasswordField passwordField = new JPasswordField();
-        passwordField.setBounds((axisX - fieldWidth) / 2, 270, fieldWidth, 25);
+        passwordField.setBounds((axisX - fieldWidth) / 2, currentY, fieldWidth, commonHeight);
         root.add(passwordField);
+        currentY += padY;
 
-        // Phone
+    // PHONE
+        // Phone Label
         JLabel phoneLabel = new JLabel("Phone (optional):");
-        phoneLabel.setBounds(
-            (axisX - labelWidth) / 2,
-            300,
-            labelWidth + 100,
-            25
-        );
+        phoneLabel.setBounds((axisX - commonWidth) / 2, currentY, commonWidth, commonHeight);
         root.add(phoneLabel);
+        currentY += padY;
 
+        // Phone Input
         JTextField phoneField = new JTextField();
-        phoneField.setBounds((axisX - fieldWidth) / 2, 330, fieldWidth, 25);
+        phoneField.setBounds((axisX - fieldWidth) / 2, currentY, fieldWidth, commonHeight);
         root.add(phoneField);
+        currentY += padY * 2;
 
         // Register Button
         JButton registerButton = new JButton("Register");
-        registerButton.setBounds(
-            (axisX - buttonWidth) / 2,
-            360,
-            buttonWidth,
-            25
-        );
+        registerButton.setBounds((axisX - especialWidth) / 2, currentY, especialWidth, commonHeight);
         root.add(registerButton);
+        currentY += padY;
 
         JLabel statusLabel = new JLabel("");
-        statusLabel.setBounds(
-            (axisX - labelWidth) / 2,
-            400,
-            labelWidth + 300,
-            25
-        );
+        statusLabel.setBounds((axisX - (especialWidth + 90)) / 2, currentY, (especialWidth + 90), commonHeight);
         root.add(statusLabel);
+        currentY += padY * 2;
+
+        // Login Button
+        JButton loginButton = new JButton("Already have an account? Login");
+        loginButton.setBounds((axisX - (especialWidth + 100)) / 2, currentY, (especialWidth + 100), commonHeight);
+        loginButton.setContentAreaFilled(false);
+        loginButton.setBorderPainted(false);
+        loginButton.setFocusPainted(false);
+        loginButton.setOpaque(false);
+        root.add(loginButton);
+        loginButton.addActionListener(e -> {
+            root.dispose();
+            Login.login();
+        });
 
         registerButton.addActionListener(e -> {
             String username = usernameField.getText().trim();
@@ -152,6 +169,7 @@ public class Register {
 
             statusLabel.setText("Client registered successfully!");
         });
+
 
         root.setVisible(true);
     }

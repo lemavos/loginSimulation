@@ -1,10 +1,12 @@
+// Call The Aplication
+
 package com.app;
 
-import com.app.gui.MainMenu;
+import com.app.gui.Login;
 
 public class Main {
 
     public static void main(String[] args) {
-        MainMenu.main(args);
+        Login.login();
     }
 }

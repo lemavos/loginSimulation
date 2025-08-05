@@ -1,13 +1,11 @@
 package com.app.models;
 
 import com.app.services.IdGen;
-import java.math.BigDecimal;
 
 public class Client {
 
     private String id;
     private boolean status;
-    private BigDecimal credit;
     private String name;
     private String email;
     private String phone;
@@ -25,7 +23,6 @@ public class Client {
         System.out.println("  Phone: " + this.phone);
         System.out.println("  ID: " + this.id);
         System.out.println("  Status: " + this.status);
-        System.out.println("  Credit: " + this.credit);
     }
 
     private void createClient(
@@ -39,7 +36,6 @@ public class Client {
         this.phone = phone;
         this.id = new IdGen().generateId();
         this.status = false;
-        this.credit = new BigDecimal(0);
         this.password = password;
         System.out.println("|  Client created with ID: " + this.id);
     }
@@ -58,17 +54,6 @@ public class Client {
     }
 
     // criar uma ui pra isso
-    public void deleteClient(Client client) {
-        if (client.credit.compareTo(BigDecimal.ZERO) > 0) {
-            System.out.println(
-                "\n[!] Client cannot be deleted. Credit must be zero."
-            );
-            return;
-        }
-        client.status = false;
-        System.out.println("\nClient deleted with ID: " + client.id);
-    }
-
     // Getters
     public String getId() {
         return id;
@@ -90,19 +75,11 @@ public class Client {
         return password;
     }
 
-    public BigDecimal getCredit() {
-        return credit;
-    }
-
     public boolean getStatus() {
         return status;
     }
 
     // Setters
-    public void setCredit(BigDecimal credit) {
-        this.credit = credit;
-    }
-
     public String getValidateCode() {
         return validateCode;
     }
